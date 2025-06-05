@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adventure Travel</title>
+    <style>
+        body {
+            background-color: #f2d7d5;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            margin: 20px;
+        }
+
+        .navbar {
+            background-color: #a93226;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            margin: 0 5px;
+            border-radius: 5px;
+        }
+
+        .navbar a:hover {
+            background-color: #641e16;
+        }
+h2 {
+            color: #a93226;
+            margin-top: 20px;
+        }
+
+
+        .image-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.image-container img {
+     width: 80%; /* Reduce width to make it smaller */
+    max-width: 500px; /* Set a max width to keep it controlled */
+    border-radius: 10px;
+    animation: fadeBounce 3s ease-in-out infinite;
+}
+
+/* Fade-in and bounce animation */
+@keyframes fadeBounce {
+    0% {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.05);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+        table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #a52a2a; /* Brownish red */
+    color: #f5f5f5; /* Light gray to match */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+th, td {
+    border: 2px solid #d3cdc9; /* Light grey border */
+    padding: 15px;
+    text-align: center;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+th {
+    background-color: #8b0000; /* Darker red */
+    font-size: 18px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #f0e6e0; /* light beige to match */
+}
+
+td {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+tr:hover {
+    background-color: #cd5c5c; /* Indian red hover */
+    transform: translateY(-2px);
+}
+
+tr:nth-child(even) {
+    background-color: #b22222; /* Firebrick even rows */
+}
+
+table::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), transparent);
+    pointer-events: none;
+}
+
+tr:hover td {
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+}
+
+table {
+    position: relative;
+    border: 2px solid transparent;
+    background-image: linear-gradient(#a52a2a, #a52a2a), linear-gradient(to right, transparent, #d3cdc9);
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+}
+
+table:hover {
+    animation: border-glow 2s linear infinite;
+}
+
+@keyframes border-glow {
+    0% { border-image-slice: 1; border-image-width: 2px; border-image-source: linear-gradient(to right, transparent, #d3cdc9); }
+    50% { border-image-slice: 1; border-image-width: 2px; border-image-source: linear-gradient(to right, #d3cdc9, transparent); }
+    100% { border-image-slice: 1; border-image-width: 2px; border-image-source: linear-gradient(to right, transparent, #d3cdc9); }
+}
+
+        ul, ol {
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        .nav-buttons {
+            text-align: right;
+            margin-top: 20px;
+        }
+
+        .button {
+            background-color: #a93226;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .button:hover {
+            background-color: #641e16;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .navbar a {
+                display: block;
+                width: 100%;
+                margin: 5px 0;
+            }
+
+            table, th, td {
+                display: block;
+                width: auto;
+            }
+
+            th {
+                text-align: left;
+            }
+
+            td {
+                text-align: left;
+                border: none;
+                border-bottom: 1px solid white;
+            }
+
+            tr {
+                margin-bottom: 10px;
+            }
+
+            tr:last-child td {
+                border-bottom: none;
+            }
+
+            td img {
+                max-width: 100%;
+                height: auto;
+            }
+
+            .nav-buttons {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+ <script>
+    function createPlaceholderPages() {
+      const pages = [
+        "wildlife_page.html",
+        "extreme_sports_page.html",
+        "hiking_page.html",
+        "scuba_diving_page.html",
+        "skydiving_page.html",
+        "travel_tips_page.html",
+      ];
+
+      pages.forEach(page => {
+        if (!pageExists(page)) {
+          createPage(page);
+        }
+      });
+    }
+
+    function pageExists(pageName) {
+      // Basic check, replace with server-side logic if needed.
+      return false; // Always create for this example.
+    }
+
+    function createPage(pageName) {
+      const content = `
+        <!DOCTYPE html>
+        <html>
+        <head>
+          <title>${pageName.replace(/_/g, ' ').replace('.html', '')}</title>
+        </head>
+        <body>
+          <h1>${pageName.replace(/_/g, ' ').replace('.html', '')} Page</h1>
+          <p>This is the content for ${pageName}.</p>
+          <a href="index.html">Back to Adventures</a>
+        </body>
+        </html>
+      `;
+      // In a real environment, you'd write this content to a file.
+      // For this example, it's just a placeholder.
+        console.log("Placeholder Page created for:", pageName);
+    }
+    createPlaceholderPages();
+  </script>
+
+<marquee behavior="scroll" direction="left" style="background-color: #a93226; color: white; padding: 10px; font-size: 20px; font-weight: bold;">
+    😃 Welcome to the World of Adventure Travel! 🌍✨
+</marquee>
+
+<div class="navbar">
+    <a href="index.html">HOME</a>
+    <a href="wildlife.html">WILDLIFE EXPEDITIONS</a>
+    <a href="extreme-sports.html">EXTREME SPORTS</a>
+    <a href="hiking.html">HIKING TRAILS</a>
+    <a href="scuba-diving.html">SCUBA DIVING SPOTS</a>
+    <a href="skydiving.html">SKYDIVING DESTINATIONS</a>
+    <a href="travel-tips.html">TRAVEL TIPS</a>
+</div>
+
+<div class="container">
+    <div class="image-container">
+        <img src="travel.jpg" alt="Adventure Travel Image">
+        <p><i>"Life is either a daring adventure or nothing at all." - Helen Keller</i></p>
+    </div>
+
+    <h2>The Thrill of Adventure Travel</h2>
+    <p>
+        Adventure travel is about more than just visiting new places; it’s about pushing your limits, seeking new experiences, and embracing the unknown.
+        Whether it’s trekking through dense jungles, climbing towering peaks, or diving deep into the ocean, adventure travel provides a unique sense of excitement and discovery.
+    </p>
+    <p>
+        For those who crave adrenaline, activities like skydiving, white-water rafting, and paragliding offer the ultimate thrill.
+        On the other hand, those who prefer nature can explore breathtaking national parks, wildlife safaris, and remote hiking trails.
+        No matter the destination, adventure travel transforms the way we see the world, leaving us with unforgettable memories and stories to tell.
+    </p>
+
+    <h2>Discover the Best Adventure Travel Experiences</h2>
+    <p>
+        Adventure travel is about more than just visiting new places; it’s about pushing your limits, seeking new experiences, and embracing the unknown.
+        Whether it’s trekking through dense jungles, climbing towering peaks, or diving deep into the ocean, adventure travel provides a unique sense of excitement and discovery.
+    </p>
+
+    <h3>Explore Different Adventures</h3>
+   <table>
+    <tr>
+      <th>Category</th>
+      <th>Image</th>
+      <th>Description</th>
+    </tr>
+    <tr>
+      <td><b>Wildlife Expeditions</b></td>
+      <td><a href="wildlife.html"><img src="wildlife.jpg" width="200" height="120" alt="Wildlife"></a></td>
+      <td>Witness the beauty of the animal kingdom in their natural habitats. Explore safaris and national parks across the world.</td>
+    </tr>
+    <tr>
+      <td><b>Extreme Sports</b></td>
+      <td><a href="extreme-sports.html"><img src="extreme.jpg" width="200" height="120" alt="Extreme Sports"></a></td>
+      <td>For adrenaline junkies, extreme sports offer thrilling experiences like bungee jumping, mountain biking, and rafting.</td>
+    </tr>
+    <tr>
+      <td><b>Hiking Trails</b></td>
+      <td><a href="hiking.html"><img src="hiking.jpg" width="200" height="120" alt="Hiking"></a></td>
+      <td>Embark on breathtaking hiking adventures through scenic trails, from lush forests to towering mountains.</td>
+    </tr>
+    <tr>
+      <td><b>Scuba Diving</b></td>
+      <td><a href="scuba-diving.html"><img src="scuba.jpg" width="200" height="120" alt="Scuba Diving"></a></td>
+      <td>Dive into the deep blue ocean and explore coral reefs, marine life, and underwater caves.</td>
+    </tr>
+    <tr>
+      <td><b>Skydiving</b></td>
+      <td><a href="skydiving.html"><img src="skydive.jpg" width="200" height="120" alt="Skydiving"></a></td>
+      <td>Experience the ultimate thrill of free-falling from the sky with professional skydiving adventures.</td>
+    </tr>
+    <tr>
+      <td><b>Travel Tips</b></td>
+      <td><a href="travel-tips.html"><img src="adventure2.jpg" width="200" height="120" alt="Travel Tips"></a></td>
+      <td>Get essential travel advice, safety tips, and packing guides to ensure a smooth and memorable journey.</td>
+    </tr>
+  </table>
+   <h2>Top Adventure Activities</h2>
+<ul>
+    <li>
+        <b>Wildlife Expeditions</b>
+        <ul style="padding-top: 10px;">  <li>Exploring jungles and national parks</li>
+            <li>Safari trips to witness rare species</li>
+            <li>Birdwatching in exotic locations</li>
+        </ul>
+    </li>
+
+    <li style="margin-top: 20px;">
+        <b>Extreme Sports</b>
+        <ul style="padding-top: 10px;">  <li>Skydiving from breathtaking heights</li>
+            <li>Base jumping off cliffs</li>
+            <li>Wingsuit flying for the ultimate rush</li>
+        </ul>
+    </li>
+
+    <li style="margin-top: 20px;">
+        <b>Hiking and Trekking</b>
+        <ul style="padding-top: 10px;">  <li>Exploring mountains and trails</li>
+            <li>Backpacking in the wild</li>
+            <li>Summiting peaks for panoramic views</li>
+        </ul>
+    </li>
+
+    <li style="margin-top: 20px;">
+        <b>Scuba Diving and Water Sports</b>
+        <ul style="padding-top: 10px;">  <li>Discovering marine life underwater</li>
+            <li>Snorkeling in coral reefs</li>
+            <li>Jet skiing for an adrenaline rush</li>
+        </ul>
+    </li>
+
+    <li style="margin-top: 20px;">
+        <b>Skydiving and Aerial Adventures</b>
+        <ul style="padding-top: 10px;">  <li>Jumping from aircraft for an unmatched thrill</li>
+            <li>Paragliding over scenic landscapes</li>
+            <li>Bungee jumping off iconic bridges</li>
+        </ul>
+    </li>
+</ul>    <h3>Popular Adventure Activities & Destinations</h3>
+    <table>
+        <tr>
+            <th>Adventure</th>
+            <th>Destination</th>
+            <th>Difficulty Level</th>
+        </tr>
+        <tr>
+            <td>Wildlife Safari</td>
+            <td>Serengeti, Tanzania</td>
+            <td>Easy</td>
+        </tr>
+        <tr>
+            <td>Scuba Diving</td>
+            <td>Great Barrier Reef, Australia</td>
+            <td>Moderate</td>
+        </tr>
+        <tr>
+            <td>Hiking</td>
+            <td>Himalayas, Nepal</td>
+            <td>Hard</td>
+        </tr>
+        <tr>
+            <td>Skydiving</td>
+            <td>Dubai, UAE</td>
+            <td>Extreme</td>
+        </tr>
+        <tr>
+            <td>Bungee Jumping</td>
+            <td>Queenstown, New Zealand</td>
+            <td>Extreme</td>
+        </tr>
+    </table>
+
+    <p>
+        No matter your level of experience, there’s an adventure waiting for you. So pack your bags, gather your courage,
+        and explore the limitless possibilities of adventure sports and expeditions!
+    </p>
+
+    <h3>Top Adventure Destinations</h3>
+    <ol>
+        <li>Mount Everest, Nepal - The ultimate challenge for climbers.</li>
+        <li>Great Barrier Reef, Australia - A paradise for scuba diving enthusiasts.</li>
+        <li>Amazon Rainforest, Brazil - A biodiversity hotspot for nature lovers.</li>
+        <li>Serengeti National Park, Tanzania - A dream destination for wildlife enthusiasts.</li>
+        <li>Grand Canyon, USA - A breathtaking natural wonder perfect for hiking and rafting.</li>
+    </ol>
+
+    <h3>Types of Adventure Travel</h3>
+    <table>
+        <tr>
+            <th>Category</th>
+            <th>Activities</th>
+        </tr>
+        <tr>
+            <td><b>Land Adventures</b></td>
+            <td>
+                <ul>
+                    <li>Mountain Climbing</li>
+                    <li>Hiking & Trekking</li>
+                    <li>Desert Safaris</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td><b>Water Adventures</b></td>
+            <td>
+                <ul>
+                    <li>Scuba Diving</li>
+                    <li>White Water Rafting</li>
+                    <li>Kayaking</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td><b>Air Adventures</b></td>
+            <td>
+                <ul>
+                    <li>Skydiving</li>
+                    <li>Paragliding</li>
+                    <li>Bungee Jumping</li>
+                </ul>
+            </td>
+        </tr>
+    </table>
+
+    <h2>Conclusion</h2>
+    <p>
+        Adventure travel is a transformative experience, inviting individuals to push their boundaries and embrace the unknown. For thrill-seekers, activities like skydiving, rock climbing, or scuba diving offer an adrenaline rush that tests physical and mental limits. For those seeking tranquility, hiking through serene landscapes, kayaking across glassy waters, or exploring the wonders of wildlife create opportunities for deep connection with nature and oneself. Regardless of your choice, each journey becomes a unique story—one that shapes your perspectives and expands your horizons.
+    </p>
+    <p>
+        What makes adventure travel truly remarkable is its ability to ignite a sense of exploration and curiosity. It challenges you to leave your comfort zone behind, adapt to unfamiliar environments, and overcome obstacles with resilience. Along the way, you gain new skills, build confidence, and discover facets of your character you never knew existed. Every adventure is an opportunity to grow, whether it's mastering a new technique, learning about cultures, or simply appreciating the beauty of the world.
+    </p>
+    <p>
+        Ultimately, adventure travel is not just about the destinations or activities; it's about the journey itself and the person you become through it. The landscapes you traverse and the challenges you face turn into lasting memories that inspire you to seek more. Whether you're a seasoned adventurer or a newcomer craving excitement, the world is full of opportunities to dive into experiences that enrich your life and fuel your spirit of discovery. Let me know if you'd like to explore specific adventures or destinations!🌍✨
+
+    </p>
+
+    <div class="nav-buttons">
+        <a href="wildlife.html" class="button">Next: Wildlife Expeditions ➡</a>
+    </div>
+</div>
+
+</body>
+</html>
